@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome to My Flask App</h1>
+    <p>This is a simple webpage served using Flask.</p>
+    <button id="apiButton">Fetch API Data</button>
+    <p id="apiResponse"></p>
+
+    <script>
+        document.getElementById("apiButton").addEventListener("click", async () => {
+            const response = await fetch("/api/data");
+            const data = await response.json();
+            document.getElementById("apiResponse").innerText = data.message;
+        });
+    </script>
+</body>
+</html>
